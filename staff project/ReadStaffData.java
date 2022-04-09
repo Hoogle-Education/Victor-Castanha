@@ -29,11 +29,13 @@ public class ReadStaffData {
 		}
 		sc.close();  //closes the scanner
 
-		
+
 		// We can print film details due to overridden toString method in film class
 		Staff[] copy = staffs;
 		insertionSort(staffs, 10000);
-		long startPrint = System.currentTimeMillis();
+	//Question 2
+
+	long startPrint = System.currentTimeMillis();
 		System.out.println(Arrays.toString(staffs));
 		Long endPrint = System.currentTimeMillis();
 
@@ -61,7 +63,7 @@ public class ReadStaffData {
 	private static void timeToSort(Staff[] staffs, int size, long start) {
 		insertionSort(staffs, size);
 		long end = System.currentTimeMillis(); // 2.8
-		
+
 		System.out.println("Total time: " + (end-start) + "ms");
 	}
 
@@ -79,7 +81,7 @@ public class ReadStaffData {
 			staffs[i] = staffs[minIndex];
 			staffs[minIndex] = temp;
 		}
-	}	
+	}
 
 */
     //INSERTION SORT
@@ -96,7 +98,7 @@ public class ReadStaffData {
 		}
 
 	 }
-	
+
 }
 
 /*

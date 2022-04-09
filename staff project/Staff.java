@@ -88,28 +88,33 @@ class Staff implements Comparable<Staff>{
 		else	if( expression1 <= -1 )
 			return -1;
 		else{
-			int expression2;
-			if( empNo > other.getEmpNo() ) expression2 = 1;
-			else if(empNo < other.getEmpNo() ) expression2 = -1;
-			else expression2 = 0;
+			int expression2; //Second Name are the same
+			if( empNo > other.getEmpNo() )
+			expression2 = 1; //sorting by Employee Number if the empNo (first element)
+							 //is bigger than the empNo (second element), print out 1
+			else if(empNo < other.getEmpNo() )
+			expression2 = -1; //sorting by Employee Number if the empNo (first element)
+							 //is smaller than the empNo (second element), print out -1
+			else expression2 = 0; //if the empNo is the same.
 
 			return expression2;
 		}
 
 	}
+/*
+	 public static void main(String[] args) {
+	 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	 	try {
+	 		Staff s1 = new Staff(2, "Hugo", "Rafa", dateFormat.parse("1985-11-01") , 2.0f, dateFormat.parse("1992-04-03") );
+	 		Staff s2 = new Staff(2, "Victor", "Rafa", dateFormat.parse("1985-11-01") , 2.0f, dateFormat.parse("1992-04-03") );
 
-	// public static void main(String[] args) {
-	// 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	// 	try {
-	// 		Staff s1 = new Staff(2, "Jhon", "A", dateFormat.parse("1985-11-01") , 2.0f, dateFormat.parse("1992-04-03") );
-	// 		Staff s2 = new Staff(7, "Jhon", "A", dateFormat.parse("1985-11-01") , 2.0f, dateFormat.parse("1992-04-03") );
-
-	// 		System.out.println(s1.compareTo(s2));
-	// 		System.out.println(s2.compareTo(s1));
-	// 	} catch (ParseException e) {
-	// 		e.printStackTrace();
-	// 	}
-	// }
+	 		System.out.println(s1.compareTo(s2));
+	 		System.out.println(s2.compareTo(s1));
+	 	} catch (ParseException e) {
+	 		e.printStackTrace();
+	 	}
+	 }
+*/
 
 
 // GUSTAVO WAY
