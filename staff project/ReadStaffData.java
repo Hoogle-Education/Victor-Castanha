@@ -1,8 +1,5 @@
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.*;
-
-import javax.sound.midi.SysexMessage;
 
 import java.text.SimpleDateFormat;
 
@@ -11,9 +8,10 @@ public class ReadStaffData {
 	public static void main(String[] args) throws Exception{
 		//parsing and reading the CSV file data into the film (object) array
 		// provide the path here...
-    File directory = new File("./");
-  	String name = directory.getAbsolutePath() + "//Staff.csv";
+    File directory = new File("");
+  	String name = directory.getAbsolutePath() + "\\Staff.csv";
 		Scanner sc = new Scanner(new File(name));
+		Scanner in = new Scanner(System.in);
 		Staff[] staffs = new Staff[10000];
 
 		// this will just print the header in CSV file
@@ -35,7 +33,7 @@ public class ReadStaffData {
 		insertionSort(staffs, 10000);
 	//Question 2
 
-	long startPrint = System.currentTimeMillis();
+		long startPrint = System.currentTimeMillis();
 		System.out.println(Arrays.toString(staffs));
 		Long endPrint = System.currentTimeMillis();
 
@@ -58,35 +56,50 @@ public class ReadStaffData {
 
 		timeToSort(staffs, 10000, start);
 		// we can compare films based on their ID due to overridden CompareTo method in film class
+
+		System.out.print("Enter a second name to search: ");
+		String sNameToSearch = in.nextLine();
+
+		Staff[] search = binarySearching(staffs, sNameToSearch);
+
+		if(search == null){
+			System.out.println("Not an existing " 
+											+ sNameToSearch + "!");
+		} else {
+			for(Staff finded : search )
+				System.out.println(finded);
+		}
+		
+
+		String answer;
+		System.out.print("You want to add new Staff? (S/N) : ");
+		answer = in.nextLine();
+
+		while(answer.equalsIgnoreCase("N")){
+
+			// meu codigo
+
+			System.out.print("You want to add new Staff? (S/N) : ");
+			answer = in.nextLine();
+
+		}
+		
 	}
 
 	private static void timeToSort(Staff[] staffs, int size, long start) {
 		insertionSort(staffs, size);
 		long end = System.currentTimeMillis(); // 2.8
 
-		System.out.println("Total time: " + (end-start) + "ms");
+		System.out.println("Total time to " 
+														+ size 
+														+ " elements : " 
+														+ (end-start) 
+														+ "ms");
 	}
-
-/*
-//SELECTION SORT
-	public static void selectionSort(Staff[] staffs) {
-		for (int i = 0; i < staffs.length - 1; i++) {
-			int minIndex = i;
-			for (int j = i + 1; j < staffs.length; j++) {
-				if (staffs[j].compareTo(staffs[minIndex]) < 0) {
-					minIndex = j;
-				}
-			}
-			Staffs temp = staffs[i];
-			staffs[i] = staffs[minIndex];
-			staffs[minIndex] = temp;
-		}
-	}
-
-*/
-    //INSERTION SORT
-   static void insertionSort(Staff[] staffs, int size){
-
+	
+	//INSERTION SORT
+	static void insertionSort(Staff[] staffs, int size){
+		
 		 for(int i=1; i < size; i++){
 				Staff aux = staffs[i];
 				int j = i-1;
@@ -98,6 +111,48 @@ public class ReadStaffData {
 		}
 
 	 }
+
+	public static Staff[] binarySearching(Staff[] staffs, String sNameToFind){
+
+		int begin = 0;
+		int finish = staffs.length - 1;
+		int start = 0, end = 0; // start and end of finded goals
+
+		while( begin <= finish ){
+			int mid = (begin+finish)/2;
+
+			if( staffs[mid].getSName().equalsIgnoreCase(sNameToFind) ){
+				 start = mid;
+				 end = mid;
+				 break;
+			} else if (staffs[mid].getSName().compareTo(sNameToFind) >= 1){
+				finish = mid-1;
+			}else {
+				begin = mid+1;
+			}
+		}
+
+		while( start > 0 ){
+			if( ! staffs[start-1].getSName().equalsIgnoreCase(sNameToFind) ) 
+				break;
+			else start--;
+		}
+		
+		while( end < staffs.length-1 ){
+			if( ! staffs[end+1].getSName().equalsIgnoreCase(sNameToFind) ) 
+				break;
+			else end++;
+		}
+
+		int total = end - start + 1;
+		Staff[] resultFinded = new Staff[total];
+
+		for(int i=start, j=0; i<=end; i++, j++){
+			resultFinded[j] = staffs[i];
+		}
+
+		return resultFinded;
+	}
 
 }
 
@@ -115,6 +170,22 @@ public class ReadStaffData {
 						}
 						query = query+1;
 				}
+*/
+/*
+//SELECTION SORT
+	public static void selectionSort(Staff[] staffs) {
+		for (int i = 0; i < staffs.length - 1; i++) {
+			int minIndex = i;
+			for (int j = i + 1; j < staffs.length; j++) {
+				if (staffs[j].compareTo(staffs[minIndex]) < 0) {
+					minIndex = j;
+				}
+			}
+			Staffs temp = staffs[i];
+			staffs[i] = staffs[minIndex];
+			staffs[minIndex] = temp;
+		}
+	}
 */
 
 
