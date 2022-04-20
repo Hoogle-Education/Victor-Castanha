@@ -18,17 +18,15 @@ public class ReadStaffData {
 		// this will just print the header in CSV file
 		sc.nextLine();
 
-		int i = 0; String st = "";
+		int i = 0; 
+		String st = "";
 		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
 		while (sc.hasNextLine())  //returns a boolean value
 		{
 				st = sc.nextLine();
 				String[] data = st.split(",");
 
-				Date birthDate = ft.parse(data[3]);
-				String fName = data[1];
-
-				staffs[i++] = new Staff(Integer.parseInt(data[0]), fName, data[2], birthDate, Float.parseFloat(data[4]), ft.parse(data[5]));
+				staffs[i++] = new Staff(Integer.parseInt(data[0]), data[1] , data[2],  ft.parse(data[3]) , Float.parseFloat(data[4]), ft.parse(data[5]));
 		}
 		sc.close();  //closes the scanner
 
@@ -81,7 +79,7 @@ public class ReadStaffData {
 			if(staffs[staffs.length - 1] != null) {
 				int emptyPosition = 0;
 				for(Staff staff : staffs){
-					if(staff == null){
+					if(staff != null){
 						emptyPosition++;
 						break;
 					}
@@ -102,7 +100,9 @@ public class ReadStaffData {
 	private static void addMoreStaffs(Staff[] staffs, Staff newStaff) {
 
 		Staff[] copyValues = staffs;
+		
 		staffs = new Staff[staffs.length+1];
+
 		for(int i=0; i<staffs.length-1; i++){
 			staffs[i] = copyValues[i];
 		}
@@ -165,12 +165,14 @@ public class ReadStaffData {
 			}
 		}
 
+		// buscando a primeira aparição
 		while( start > 0 ){
 				if( ! staffs[start-1].getSName().equalsIgnoreCase(sNameToFind) ) 
 				break;
 			else start--;
 		}
 		
+		// buscando a última aparição
 		while( end < staffs.length-1 ){
 			if( !staffs[end+1].getSName().equalsIgnoreCase(sNameToFind) ) 
 				break;
@@ -193,15 +195,26 @@ public class ReadStaffData {
 
 		for(int i=0; i<fName.length(); i++){
 			char c = fName.charAt(i);
-			if( c != '0' || c != '1'
-			|| c != '2' || c != '3'
-			|| c != '4' || c != '5'
-			|| c != '6' || c != '7'
-			|| c != '8' || c != '9'
-			){
-				onlyDigits = false;
-				break;
+
+			switch(c){
+				case '0':
+				case '1':
+				case '2':
+				case '3':
+				case '4':
+				case '5':
+				case '6':
+				case '7':
+				case '8':
+				case '9':
+					// do nothing
+					break;
+				default:
+					onlyDigits = false;
+					break;
 			}
+
+			if(!onlyDigits) break;
 		}
 
 		return onlyDigits;

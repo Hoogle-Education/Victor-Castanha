@@ -11,7 +11,6 @@ class Staff implements Comparable<Staff>{
 	private float wage;
 	private Date hireDate;
 
-
 	// constructor
 	public Staff(int empNo, String fName, String sName, Date birthDate, float wage, Date hireDate) {
 		super();
@@ -79,9 +78,7 @@ class Staff implements Comparable<Staff>{
 
 	 	Staff other = (Staff)obj;
 
-		int expression1 = sName.toUpperCase().compareTo(
-													other.getSName().toUpperCase()
-											);
+		int expression1 = sName.compareToIgnoreCase( other.getSName() );
 
 		if(expression1 >= 1 )
 			return 1;
@@ -89,7 +86,7 @@ class Staff implements Comparable<Staff>{
 			return -1;
 		else{
 			int expression2; //Second Name are the same
-			if( empNo > other.getEmpNo() )
+			if( this.empNo > other.getEmpNo() )
 			expression2 = 1; //sorting by Employee Number if the empNo (first element)
 							 //is bigger than the empNo (second element), print out 1
 			else if(empNo < other.getEmpNo() )
@@ -99,7 +96,6 @@ class Staff implements Comparable<Staff>{
 
 			return expression2;
 		}
-
 	}
 /*
 	 public static void main(String[] args) {
