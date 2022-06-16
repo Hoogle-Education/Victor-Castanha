@@ -1,0 +1,63 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch BoundedBufferSimulation",
+      "request": "launch",
+      "mainClass": "question3.BoundedBufferSimulation",
+      "projectName": "staff_project_2_d8a66ec2"
+    },
+    {
+      "type": "java",
+      "name": "Launch Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Launch Q1_A",
+      "request": "launch",
+      "mainClass": "question1.Q1_A",
+      "projectName": "staff_project_2_d8a66ec2"
+    },
+    {
+      "type": "java",
+      "name": "Launch Q1_B",
+      "request": "launch",
+      "mainClass": "question1.Q1_B",
+      "projectName": "staff_project_2_d8a66ec2"
+    },
+    {
+      "type": "java",
+      "name": "Launch Q1_D",
+      "request": "launch",
+      "mainClass": "question1.Q1_D",
+      "projectName": "staff_project_2_d8a66ec2"
+    },
+    {
+      "type": "java",
+      "name": "Launch Q2_A",
+      "request": "launch",
+      "mainClass": "question2.Q2_A",
+      "projectName": "staff_project_2_d8a66ec2"
+    },
+    {
+      "type": "java",
+      "name": "Launch Q2_B",
+      "request": "launch",
+      "mainClass": "question2.Q2_B",
+      "projectName": "staff_project_2_d8a66ec2"
+    },
+    {
+      "type": "java",
+      "name": "Launch Q2_C",
+      "request": "launch",
+      "mainClass": "question2.Q2_C",
+      "projectName": "staff_project_2_d8a66ec2"
+    }
+  ]
+}
